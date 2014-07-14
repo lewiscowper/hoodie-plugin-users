@@ -28,12 +28,14 @@ module.exports = function (grunt) {
 
     release: {
       options: {
-        commitFiles: [
-          'package.json',
-          'bower.json',
-          'CHANGELOG.md',
-          'admin-dashboard'
-        ]
+        bump: {
+          commitFiles: [
+            'package.json',
+            'bower.json',
+            'CHANGELOG.md',
+            'admin-dashboard'
+          ]
+        }
       }
     },
 
