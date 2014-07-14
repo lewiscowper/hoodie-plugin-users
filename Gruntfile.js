@@ -5,7 +5,7 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-module.exports = function( grunt ) {
+module.exports = function(grunt) {
 
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -25,6 +25,18 @@ module.exports = function( grunt ) {
   //
   grunt.initConfig({
     yeoman: yeomanConfig,
+
+
+    release: {
+      options: {
+        commitFiles: [
+          'package.json',
+          'bower.json',
+          'CHANGELOG.md',
+          'admin-dashboard'
+        ]
+      }
+    }
 
     // specify an alternate install location for Bower
     bower: {
