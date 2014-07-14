@@ -2,10 +2,10 @@
 'use strict';
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
+  return connect['static'](require('path').resolve(dir));
 };
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // load all grunt tasks
   require('load-grunt-tasks')(grunt);
@@ -13,9 +13,9 @@ module.exports = function(grunt) {
 
   // configurable paths
   var yeomanConfig = {
-      app:  'app',
-      temp: '.tmp',
-      dist: 'admin-dashboard'
+    app: 'app',
+    temp: '.tmp',
+    dist: 'admin-dashboard'
   };
 
   //
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
     useminPrepare: {
       html: 'app/index.html',
       options: {
-          dest: '<%= yeoman.dist %>'
+        dest: '<%= yeoman.dist %>'
       }
     },
 
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       html: ['<%= yeoman.dist %>/index.html'],
       css: ['<%= yeoman.dist %>/styles/**/*.css'],
       options: {
-          dirs: ['<%= yeoman.dist %>']
+        dirs: ['<%= yeoman.dist %>']
       }
     },
 
@@ -178,13 +178,13 @@ module.exports = function(grunt) {
         tasks: ['compass', 'livereload']
       },
       livereload: {
-          files: [
-            'app/*.html',
-            '{.tmp,app}/styles/**/*.css',
-            '{.tmp,app}/scripts/**/*.js',
-            'app/images/**/*.{png,jpg,jpeg,webp}'
-          ],
-          tasks: ['livereload']
+        files: [
+          'app/*.html',
+          '{.tmp,app}/styles/**/*.css',
+          '{.tmp,app}/scripts/**/*.js',
+          'app/images/**/*.{png,jpg,jpeg,webp}'
+        ],
+        tasks: ['livereload']
       },
       handlebars: {
         files: [
@@ -204,9 +204,9 @@ module.exports = function(grunt) {
         options: {
           middleware: function (connect) {
             return [
-                lrSnippet,
-                mountFolder(connect, '.tmp'),
-                mountFolder(connect, 'app')
+              lrSnippet,
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'app')
             ];
           }
         }
@@ -225,7 +225,7 @@ module.exports = function(grunt) {
         options: {
           middleware: function (connect) {
             return [
-                mountFolder(connect, '<%= yeoman.dist %>')
+              mountFolder(connect, '<%= yeoman.dist %>')
             ];
           }
         }
@@ -254,7 +254,7 @@ module.exports = function(grunt) {
         files: {
           '<%= yeoman.dist %>/scripts/app.js': [
             '.tmp/scripts/**/*.js'
-          ],
+          ]
         }
       }
     },
@@ -272,21 +272,9 @@ module.exports = function(grunt) {
     // specifying JSHint options and globals
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#specifying-jshint-options-and-globals
     jshint: {
+      files: ['Gruntfile.js'],
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true
-      },
-      globals: {
-        jQuery: true
+        jshintrc: '.jshintrc'
       }
     },
 
@@ -349,14 +337,14 @@ module.exports = function(grunt) {
     handlebars: {
       compile: {
         files: {
-            ".tmp/scripts/compiled-templates.js": [
-            "app/scripts/templates/**/*.hbs"
+          '.tmp/scripts/compiled-templates.js': [
+            'app/scripts/templates/**/*.hbs'
           ]
         },
         options: {
           // namespace: 'admin-dashboard.Templates',
           namespace: 'JST',
-          processName: function(filename) {
+          processName: function (filename) {
             // funky name processing here
             return filename
               .replace(/^app\/scripts\/templates\//, '')
